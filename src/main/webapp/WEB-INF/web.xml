@@ -1,0 +1,15 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+   http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+<display-name>Archetype Created Web Application</display-name>
+<servlet>
+<servlet-name>ser1</servlet-name>
+<servlet-class>servlet1</servlet-class>
+<!-- <load-on-startup>1</load-on-startup> -->
+</servlet>
+<servlet-mapping>
+<servlet-name>ser1</servlet-name>
+<url-pattern>/serlet1</url-pattern>
+</servlet-mapping>
+
+</web-app>
