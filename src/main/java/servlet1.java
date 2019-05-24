@@ -1,6 +1,10 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
@@ -9,34 +13,52 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mysql.jdbc.Statement;
+//import com.mysql.jdbc.Statement;
 
 public class servlet1 extends HttpServlet {
-    public static final String fl="Db.Properties";
+    public static final String fl = "Db.Properties";
 
     @Override
     public void init() throws ServletException {
-    System.out.println("init() called:");
+        System.out.println("init() called:");
 
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Properties prop = new Properties();
-        InputStream input= null;
-        input = servlet1.class.getResourceAsStream(fl);
-        prop.load(input);
-        String url = prop.getProperty("jdbc.url");
-        String username = prop.getProperty("jdbc.username");
-        String password = prop.getProperty("jdbc.password");        
-        
+        // Properties prop = new Properties();
+        // InputStream input = null;
+        // input = servlet1.class.getResourceAsStream(fl);
+        // prop.load(input);
+        // String url = prop.getProperty("jdbc.url");
+        // String username = prop.getProperty("jdbc.username");
+        // String password = prop.getProperty("jdbc.password");
+
+        Connection con;
+        try {
+          //  con = DriverManager.getConnection(url, username, password);
+          Connection con1=DriverManager.getConnection("jdbc:mysql://localhost:3306/stock","root","");  
+            Statement stmr = con1.createStatement();
+            ResultSet rs = stmr.executeQuery("Select * from login");
+ String h;
+            while (rs.next()) {
+                System.out.println("\n" + rs.getString(1) +"" + rs.getInt(2) + " " + rs.getDate(3)+ " "
+                        + rs.getString(4)  );
+                        h=rs.getString(4);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+       
+        System.out.println(h);
         
         
         
         
         String name = req.getParameter("name");
         String pw= req.getParameter("password");
-        req.setAttribute("name", name+"  "+pw);
+        req.setAttribute("name", name+"  "+pw+"");
      RequestDispatcher rd= req.getRequestDispatcher("in.jsp");
      rd.forward(req, resp);
 

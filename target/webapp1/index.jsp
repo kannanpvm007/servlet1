@@ -54,15 +54,15 @@
 
                             <input type="number" name="age" size=“50” maxlength=“45”></p>
 
-                        <p> Birthday :<input type="date" name=dob size="50"></p>
+                        <p> Birthday :<input type="date" name="dob" size="50"></p>
                         <p> Marital status:
                             <label>
                                 
                                 
                               
 
-                            <label> <input type="radio" name=married-unmarried value="married "> married </label>
-                            <label> <input type="radio" name=married-unmarried value="unmarried"> unmarried</label>
+                            <label> <input type="radio" name=married value="married "> married </label>
+                            <label> <input type="radio" name=married value="unmarried"> unmarried</label>
                         </p>
 
                         <p> teachnology skills:
@@ -75,14 +75,14 @@
 
 
                         <select name="work">
-                            <option value="Software">Software</option>
-                            <option value="hardwork">hardwork</option>
-                            <option value="network">network</option>
+                            <option value="SoftWare">Software</option>
+                            <option value="hardWark">hardwork</option>
+                            <option value="netWork">network</option>
                         </select>
 
 
 
-
+                             <br> SET new  password: <input type="password" name="password">
 
 
                         <p>
