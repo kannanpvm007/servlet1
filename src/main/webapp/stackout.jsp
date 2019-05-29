@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> -->
-
+        <%@ page language="java" contentType="text/html; charset=UTF-8"
+        pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 
 </head>
 <center>
@@ -39,8 +42,7 @@
             <table border="2">
                 <tr class="row">
                     <td class="col">TradeID : </td>
-                    <td class="col"><%=
-                                request.getParameter("tradeid")   
+                    <td class="col"><%= request.getParameter("tradeid")   
                                %></td>
                 </tr>
                 <tr class="row">

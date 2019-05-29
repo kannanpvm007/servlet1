@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +35,7 @@ public class servlet1 extends HttpServlet {
         // String username = prop.getProperty("jdbc.username");
         // String password = prop.getProperty("jdbc.password");
 
-        Connection con;
+        // Connection con;
         try {
           //  con = DriverManager.getConnection(url, username, password);
           Connection con1=DriverManager.getConnection("jdbc:mysql://localhost:3306/stock","root","");  
@@ -42,41 +43,65 @@ public class servlet1 extends HttpServlet {
             ResultSet rs = stmr.executeQuery("Select * from login");
  String h;
             while (rs.next()) {
-                System.out.println("\n" + rs.getString(1) +"" + rs.getInt(2) + " " + rs.getDate(3)+ " "
+                System.out.println("\n" + rs.getString(1) +" " + rs.getInt(2) + " " + rs.getDate(3)+ " "
                         + rs.getString(4)  );
                         h=rs.getString(4);
+                        // from db
+                        String user =rs.getString(1);
+                        int age=rs.getInt(2);
+                        Date date=rs.getDate(3);
+                        String psw=rs.getString(4);
+                        // from local
+                        String name = req.getParameter("name");
+                        String pw= req.getParameter("password");   
+                        
+                        if(user.equals(name) && psw.equals(pw)){
+                            req.setAttribute("name", name);
+                RequestDispatcher rd1= req.getRequestDispatcher("stack.jsp");
+                rd1.forward(req, resp);
+                System.out.println("in db: "+user+"  " +psw);
+                        }
+                       else {       
+                      //  String name = req.getParameter("name");
+                        //String pw= req.getParameter("password");
+                        req.setAttribute("name", name +" invalid login");
+                     RequestDispatcher rd= req.getRequestDispatcher("in.jsp");
+                     rd.forward(req, resp);
+                       }
             }
+            
+
+
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-       
-        System.out.println(h);
+    }}
         
-        
-        
-        
-        String name = req.getParameter("name");
-        String pw= req.getParameter("password");
-        req.setAttribute("name", name+"  "+pw+"");
-     RequestDispatcher rd= req.getRequestDispatcher("in.jsp");
-     rd.forward(req, resp);
-
-
-
-
-
-
-
-
-    }
     
-    @Override
-    public void destroy() {
-        super.destroy();
-    }
+        
+        
+        
+    //     String name = req.getParameter("name");
+    //     String pw= req.getParameter("password");
+    //     req.setAttribute("name", name+"  "+pw+"");
+    //  RequestDispatcher rd= req.getRequestDispatcher("in.jsp");
+    //  rd.forward(req, resp);
 
-}
+
+
+
+
+
+
+    
+    
+//     @Override
+//     public void destroy() {
+//         super.destroy();
+//     }
+
+// }
 
 
 

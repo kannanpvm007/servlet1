@@ -9,11 +9,44 @@
 </head> 
 <body> 
     <br> <br>
-    
+    <body background="poux8.gif">
      <center>
         <font color="green">
 
-                <form action="stackout.jsp" method="get">
+                <script>
+                        function startTime() {
+                            var today = new Date();
+                            var h = today.getHours();
+                            var m = today.getMinutes();
+                            var s = today.getSeconds();
+                            var day = today.getDate();
+                            var mon = today.getMonth();
+                            var yer = today.getFullYear();
+                            m = checkTime(m);
+                            s = checkTime(s);
+                            document.getElementById('txt').innerHTML =
+                                h + ":" + m + ":" + s + "  " + "DATE" + " " + day + ":" + mon + ":" + yer;
+                            var t = setTimeout(startTime, 500);
+                        }
+                        function checkTime(i) {
+                            if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+                            return i;
+                        }
+                    </script>
+        
+                    <body onload="startTime()">
+        
+                        <div id="txt"></div>
+        
+
+
+
+
+<!-- 
+                <form action="stackout.jsp" method="POST"> -->
+                    <form action="/Stock2" method="POST" >
+
+                    <h2> Welcom dear:${name}  </h2>
                     <table border="2">
                         <tr class="row">
         
@@ -31,8 +64,9 @@
                         </tr>
                         <!-- <font color="yellow"> -->
                             <tr class="row">
+                                    <!-- id="tradedate" -->
                                 <td class="col">tradedate : </td>
-                                <td class="col"><input type="date" name="tradedate" id="tradedate"></td>
+                                <td class="col"><input type="date" name="tradedate"></td>
                             </tr>
                             <tr class="row">
                                 <td class="col">tradetype : </td>

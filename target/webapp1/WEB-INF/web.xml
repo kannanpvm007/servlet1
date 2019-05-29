@@ -12,4 +12,17 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:/
 <url-pattern>/serlet1</url-pattern>
 </servlet-mapping>
 
+<servlet>
+<servlet-name>ser2</servlet-name>
+<servlet-class>stackjava</servlet-class>
+<!-- <load-on-startup>1</load-on-startup> -->
+</servlet>
+<servlet-mapping>
+<servlet-name>ser2</servlet-name>
+<url-pattern>/Stock2</url-pattern>
+</servlet-mapping>
+
+
+
+
 </web-app>
